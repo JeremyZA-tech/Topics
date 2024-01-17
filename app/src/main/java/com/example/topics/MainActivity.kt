@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -68,8 +69,14 @@ fun TopicsApp(){
 
 @Composable
 fun TopicList(topicList: List<Topic>, modifier: Modifier = Modifier ){
-    LazyVerticalGrid(columns = GridCells.Fixed(2), verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)){
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(8.dp),
+        modifier = modifier
+
+    ){
         items(topicList){ topic ->
             TopicCard(
                 topic =topic,
@@ -82,7 +89,8 @@ fun TopicList(topicList: List<Topic>, modifier: Modifier = Modifier ){
 @Composable
 fun TopicCard(topic: Topic, modifier: Modifier = Modifier){
     Card (modifier = Modifier
-        .fillMaxWidth()){
+        .fillMaxWidth()
+    ){
 
         Row {
             Image(
